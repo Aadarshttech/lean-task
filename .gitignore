@@ -1,0 +1,17 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary & Editor files
+*.tmp
+*.bak
+*.swp
+*~
+.idea/
+.vscode/
+
+# Python & Node artifacts
+__pycache__/
+*.py[cod]
+node_modules/
