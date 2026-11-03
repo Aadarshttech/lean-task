@@ -1,4 +1,4 @@
-# ⚡ Lean Task (`lean-task`)
+# Lean Task (`lean-task`)
 
 > **Stop coding agents from treating a 2-minute fix like an architectural overhaul.**  
 > A lightweight, battle-tested skill and rule directive that keeps AI coding agents fast, disciplined, and strictly bounded on simple tasks.
@@ -10,7 +10,7 @@
 
 ---
 
-## 📌 The Problem
+## The Problem
 
 Simple tasks fail in one predictable way: **the agent treats a 2-minute job like a senior staff architecture investigation.**
 
@@ -25,7 +25,7 @@ When asked to swap an image or change a string, an uncontrolled agent will:
 
 ---
 
-## 🎯 The Lean Task Matrix
+## The Lean Task Matrix
 
 When a prompt arrives, the agent silently sizes the task and locks into a budget:
 
@@ -39,7 +39,7 @@ When a prompt arrives, the agent silently sizes the task and locks into a budget
 
 ---
 
-## 🔄 The 5-Phase `S`-Task Loop
+## The 5-Phase `S`-Task Loop
 
 ```mermaid
 flowchart LR
@@ -57,21 +57,23 @@ flowchart LR
 
 ---
 
-## 🛑 Non-Negotiable Hard Rules
+## Hard Rules
 
-- 🚫 **No Scratch Scripts:** Never create `analyze_*.py`, `check_*.py`, `inspect_*.py`, `debug_*.py`, or temporary dumps in the repository. Use one-line shell commands or `python -c "..."`.
-- 🚫 **Do Not Analyze Unprompted Content:** Swapping an image does not require analyzing its color palette, subject matter, or aesthetic balance. The user chose the asset; swap it.
-- 🚫 **Match, Don't Investigate:** To keep layouts intact, read the old asset's dimensions/format (`file old.png`) and convert the new one only if they differ.
-- 🚫 **Touch Only Target Files:** No drive-by lint fixes, cosmetic re-ordering, dependency additions, or unrelated cleanups.
-- 🚫 **No New Abstractions:** Do not create helper utilities, configuration wrappers, or abstraction layers unless specifically asked. Hardcode the simple change.
-- 🚫 **Do Not Re-verify:** One check is sufficient. Do not run three consecutive commands verifying the same diff.
-- 🚫 **30-Second Review Principle:** If the user cannot review the resulting PR or diff in under 30 seconds, the agent failed the lean constraint.
+These rules exist because each violation is a known time sink:
+
+- **No Scratch Scripts:** Never create `analyze_*.py`, `check_*.py`, `inspect_*.py`, `debug_*.py`, or temporary dumps in the repository. Use one-line shell commands or `python -c "..."`.
+- **Do Not Analyze Unprompted Content:** Swapping an image does not require analyzing its color palette, subject matter, or aesthetic balance. The user chose the asset; swap it.
+- **Match, Don't Investigate:** To keep layouts intact, read the old asset's dimensions/format (`file old.png`) and convert the new one only if they differ.
+- **Touch Only Target Files:** No drive-by lint fixes, cosmetic re-ordering, dependency additions, or unrelated cleanups.
+- **No New Abstractions:** Do not create helper utilities, configuration wrappers, or abstraction layers unless specifically asked. Hardcode the simple change.
+- **Do Not Re-verify:** One check is sufficient. Do not run three consecutive commands verifying the same diff.
+- **30-Second Review Principle:** If the user cannot review the resulting PR or diff in under 30 seconds, the agent failed the lean constraint.
 
 ---
 
-## 🛠️ Recipes for Common Small Tasks
+## Recipes for Common Small Tasks
 
-### 🖼️ Asset / Image Swapping
+### Asset / Image Swapping
 ```bash
 # 1. Locate usage
 grep -rn "old-logo.png"
@@ -86,7 +88,7 @@ cp new-logo.png assets/old-logo.png
 git status --short
 ```
 
-### 🔤 Text / Value / Config Update
+### Text / Value / Config Update
 ```bash
 # Locate, edit target line, confirm
 grep -rn "MAX_RETRIES"
@@ -94,12 +96,12 @@ grep -rn "MAX_RETRIES"
 git diff src/config.py
 ```
 
-### 🏷️ Rename Variable / Component
-Use IDE-style targeted replace or `grep -rl` + single replacement, followed by a quick check for orphaned references.
+### Rename Variable / Component
+Use editor-style targeted replace or `grep -rl` + single replacement, followed by a quick check for orphaned references.
 
 ---
 
-## 📥 Installation & Setup
+## Installation & Setup
 
 ### Option 1: Antigravity IDE (Recommended)
 1. Download the bundled [`lean-task.skill`](lean-task.skill) from this repository.
@@ -136,9 +138,9 @@ Small task. Smallest possible change, no new files, no extra analysis, max 6 too
 
 ---
 
-## 📊 Comparison: Unconstrained vs Lean Task
+## Comparison: Unconstrained vs Lean Task
 
-| Metric | Without Lean Task | With Lean Task ⚡ |
+| Metric | Without Lean Task | With Lean Task |
 | :--- | :--- | :--- |
 | **Tool Calls** | 18–35 calls | **2–5 calls** |
 | **Scratch Files** | `test_image.py`, `diff_check.py` | **0 files** |
@@ -149,7 +151,7 @@ Small task. Smallest possible change, no new files, no extra analysis, max 6 too
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```tree
 lean-task/
@@ -166,7 +168,7 @@ lean-task/
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! If you have optimized recipes for specific frameworks (Next.js, Django, Flutter, Rust, etc.) or tighter verification commands, feel free to submit a Pull Request.
 
@@ -178,6 +180,6 @@ Contributions are welcome! If you have optimized recipes for specific frameworks
 
 ---
 
-## 📄 License
+## License
 
 Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
